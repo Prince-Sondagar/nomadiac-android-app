@@ -1,0 +1,160 @@
+query FetchPanelistByUserId(
+  $fetchPanelistByUserIdInput: FetchPanelistByUserIdInput!
+) {
+  fetchPanelistByUserId(
+    fetchPanelistByUserIdInput: $fetchPanelistByUserIdInput
+  ) {
+    response {
+      status
+      error
+      message
+    }
+    panelist {
+      id
+      phone
+      address
+      city
+      state
+      country
+      zipCode
+      gender
+      dob
+      userId
+      blockPromotions
+      timezone
+      availablePoints
+      pointsWithdrawn
+      lucidProfileCompleted
+      blockFromLucid
+      signupSurveyResponse {
+        id
+        question
+        answer
+        panelistId
+        createdAt
+        updatedAt
+      }
+
+      user {
+        id
+        firstName
+        lastName
+        status
+        emailVerified
+        email
+        roles {
+          id
+          role
+        }
+      }
+    }
+  }
+}
+
+query LoggedInUser {
+  me {
+    response {
+      status
+      error
+      message
+    }
+    user {
+      id
+      firstName
+      lastName
+      status
+      emailVerified
+      email
+      roles {
+        id
+        role
+      }
+    }
+  }
+}
+mutation CreateMobilePanelist(
+  $registerPanelistInput: RegisterPanelistMobileInput!
+) {
+  createMobilePanelist(registerPanelistInput: $registerPanelistInput) {
+    response {
+      status
+      message
+      name
+    }
+  }
+}
+
+mutation ResetPassword($resetPassword: ResetPasswordInput!) {
+  resetPassword(resetPassword: $resetPassword) {
+    user {
+      id
+      firstName
+      lastName
+      status
+      emailVerified
+      email
+      createdAt
+      updatedAt
+    }
+    response {
+      status
+      error
+      message
+      name
+    }
+  }
+}
+
+mutation CreateSignupSurveyResponses(
+  $createSignupSurveyResponses: CreateSignupSurveyResponse!
+) {
+  createSignupSurveyResponses(
+    createSignupSurveyResponses: $createSignupSurveyResponses
+  ) {
+    response {
+      status
+      error
+      message
+    }
+
+    panelist {
+      id
+      phone
+      address
+      city
+      state
+      zipCode
+      gender
+      dob
+      userId
+      blockPromotions
+      timezone
+      availablePoints
+      pointsWithdrawn
+      lucidProfileCompleted
+      signupSurveyResponse {
+        id
+        question
+        answer
+        panelistId
+        createdAt
+        updatedAt
+      }
+    }
+  }
+}
+
+mutation VerifyTwilioMobileNumber($mobileNumber: MobileNumberInput!) {
+  verifyTwilioMobileNumber(mobileNumber: $mobileNumber) {
+    verificationResponse {
+      phoneNumberType
+      mobileNetworkCode
+      mobileCountryCode
+      carrierName
+    }
+    response {
+      status
+      message
+    }
+  }
+}

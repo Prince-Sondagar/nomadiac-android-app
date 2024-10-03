@@ -1,0 +1,48 @@
+mutation Login($loginUser: LoginUserInput!) {
+  login(loginUser: $loginUser) {
+    response {
+      status
+      error
+      message
+    }
+    roles {
+      id
+      role
+    }
+    access_token
+  }
+}
+
+mutation ForgotPassword($forgotPassword: ForgotPasswordInput!) {
+  forgotPassword(forgotPassword: $forgotPassword) {
+    response {
+      status
+      error
+      message
+    }
+  }
+}
+
+mutation VerifyEmailAndSetPassword($verifyEmailAndSetPassword: VerifyUserAndUpdatePasswordInput!) {
+  verifyEmailAndSetPassword(verifyEmailAndSetPassword: $verifyEmailAndSetPassword) {
+    response {
+      status
+      error
+      message
+    }
+    user {
+      email
+    }
+  }
+}
+
+mutation VerifyPanelistEmailAndSetPassword(
+$verifyPanelistEmailAndSetPasswordInput:VerifyUserAndUpdatePasswordInput!
+){
+  verifyPanelistEmailAndSetPassword(verifyPanelistEmailAndSetPasswordInput:$verifyPanelistEmailAndSetPasswordInput){
+    response{
+      status
+      message
+    }
+  }
+}
